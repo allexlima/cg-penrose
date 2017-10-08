@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox, QDialogButtonBox
 from .gui.mainwindow_ui import Ui_MainWindow
 from .uiPlots import PlotCanvas
 from .uiVertices import VerticesWindow
+from .tranformations import translation
 import string
 
 
@@ -13,6 +14,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.graphs = None
 		self.vertices_dialog = VerticesWindow()
 		self.vertices = []
+		self.vert_transform = []
 		self.actions()
 		self.init_canvas()
 
@@ -35,6 +37,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.pushVertice.clicked.connect(self.vertices_dialog.exec_)
 		self.popVertice.clicked.connect(self.remove_vertive)
 		self.vertices_dialog.buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.insert_vertice)
+		self.actionCompile.triggered.connect(self.render_polygon)
+		self.actionClear.triggered.connect(self.clear_all)
+		self.actionUpdate.triggered.connect(self.transforms_2d)
 
 	def __create_table(self):
 		contents = [()] if len(self.vertices) is 0 else self.vertices
@@ -53,6 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.vertices_dialog.vertice_y.setValue(0)
 		self.popVertice.setEnabled(True) if len(self.vertices) > 0 else self.popVertice.setEnabled(False)
 		if len(self.vertices) >= 3:
+			self.actionClear.setEnabled(True)
 			self.actionCompile.setEnabled(True)
 		if len(self.vertices) > 8:
 			self.alert("You can only enter up to 8 vertices", "Maximum amount of vertices")
@@ -61,9 +67,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	def remove_vertive(self):
 		self.vertices.pop()
 		self.__create_table()
-		self.popVertice.setEnabled(True) if len(self.vertices) > 0 else self.popVertice.setEnabled(False)
+		if len(self.vertices) < 3:
+			self.actionCompile.setEnabled(False)
+			self.actionClear.setEnabled(False)
 		if len(self.vertices) == 0:
 			self.helpText.show()
+			self.clear_all()
+
+	def clear_all(self):
+		self.vertices = []
+		self.__create_table()
+		self.helpText.show()
+		self.popVertice.setEnabled(False)
+		self.actionUpdate.setEnabled(False)
+		self.set_polygon()
+
+	def render_polygon(self):
+		self.set_polygon(points1=self.vertices)
+		self.actionCompile.setEnabled(False)
+		self.actionUpdate.setEnabled(True)
+
+	def transforms_2d(self):
+
+		if not self.boxTranslation.isChecked() and not self.boxShearing.isChecked() and not self.boxScale.isChecked() \
+				and not self.boxRotation.isChecked() and not self.boxReflection.isChecked():
+			self.alert("You should select at least 1 transformation before", "No transformation selected", 3)
+
+		if self.boxTranslation.isChecked():
+			r = translation(self.translation_tx.value(), self.translation_ty.value(), self.vertices)
+			self.alert("{}".format(r))
 
 	def alert(self, text, title="Alert", code=2):
 		message = QMessageBox(self)

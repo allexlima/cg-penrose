@@ -17,11 +17,15 @@ class PlotCanvas(FigureCanvas):
 	def plot(self, title, points):
 		ax = self.figure.add_subplot(111)
 		ax.cla()
-		ax.set_aspect("equal")
 		if points is not None:
-			tr = plt.Polygon(points)
+			vertices = []
+			for item in points:
+				ax.annotate(str(item[0]), (item[1], item[2]))
+				vertices.append([item[1], item[2]])
+			tr = plt.Polygon(np.array(vertices))
 			ax.add_patch(tr)
 			ax.relim()
+			ax.margins(x=0.30, y=0.30)
 			ax.autoscale_view()
 			ax.set_title(title)
-			self.draw()
+		self.draw()
