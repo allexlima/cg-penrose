@@ -1,5 +1,5 @@
 #UiCompiled
-penrose/gui/mainwindow_ui.py
+penrose/gui/*_ui.py
 
 # JetBrains Pycharm files
 .idea/

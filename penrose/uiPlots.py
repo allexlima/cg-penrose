@@ -16,13 +16,12 @@ class PlotCanvas(FigureCanvas):
 
 	def plot(self, title, points):
 		ax = self.figure.add_subplot(111)
-		if points is None:
-			points = np.array([[0, 0], [0, 0]])
-			ax.cla()
+		ax.cla()
 		ax.set_aspect("equal")
-		tr = plt.Polygon(points)
-		ax.add_patch(tr)
-		ax.relim()
-		ax.autoscale_view()
-		ax.set_title(title)
-		self.draw()
+		if points is not None:
+			tr = plt.Polygon(points)
+			ax.add_patch(tr)
+			ax.relim()
+			ax.autoscale_view()
+			ax.set_title(title)
+			self.draw()
