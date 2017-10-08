@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Cgtriangle</class>
- <widget class="QMainWindow" name="Cgtriangle">
+ <class>CgPenrose</class>
+ <widget class="QMainWindow" name="CgPenrose">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,11 +29,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>CG-Triangle</string>
+   <string>Pensrose - 2D Polygon Transforms</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/icon.png</normaloff>img/icon.png</iconset>
+    <normaloff>../img/icon.png</normaloff>../img/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -69,7 +69,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>img/plus.png</normaloff>img/plus.png</iconset>
+        <normaloff>../img/plus.png</normaloff>../img/plus.png</iconset>
       </property>
       <property name="shortcut">
        <string>F2, Space</string>
@@ -95,7 +95,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>img/cancel.png</normaloff>img/cancel.png</iconset>
+        <normaloff>../img/cancel.png</normaloff>../img/cancel.png</iconset>
       </property>
       <property name="shortcut">
        <string>Del</string>
@@ -832,7 +832,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionClear">
    <property name="icon">
     <iconset>
-     <normaloff>img/new.png</normaloff>img/new.png</iconset>
+     <normaloff>../img/new.png</normaloff>../img/new.png</iconset>
    </property>
    <property name="text">
     <string>Clear data</string>
@@ -847,7 +847,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionOpen_file">
    <property name="icon">
     <iconset>
-     <normaloff>img/open.png</normaloff>img/open.png</iconset>
+     <normaloff>../img/open.png</normaloff>../img/open.png</iconset>
    </property>
    <property name="text">
     <string>Open file</string>
@@ -859,7 +859,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionSave">
    <property name="icon">
     <iconset>
-     <normaloff>img/save.png</normaloff>img/save.png</iconset>
+     <normaloff>../img/save.png</normaloff>../img/save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -871,7 +871,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionExit">
    <property name="icon">
     <iconset>
-     <normaloff>img/close.png</normaloff>img/close.png</iconset>
+     <normaloff>../img/close.png</normaloff>../img/close.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -880,7 +880,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionGithub_repository">
    <property name="icon">
     <iconset>
-     <normaloff>img/github.png</normaloff>img/github.png</iconset>
+     <normaloff>../img/github.png</normaloff>../img/github.png</iconset>
    </property>
    <property name="text">
     <string>Github repository</string>
@@ -889,7 +889,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionAbout_this_software">
    <property name="icon">
     <iconset>
-     <normaloff>img/doc.png</normaloff>img/doc.png</iconset>
+     <normaloff>../img/doc.png</normaloff>../img/doc.png</iconset>
    </property>
    <property name="text">
     <string>About</string>
@@ -901,7 +901,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionCompile">
    <property name="icon">
     <iconset>
-     <normaloff>img/settings.png</normaloff>img/settings.png</iconset>
+     <normaloff>../img/settings.png</normaloff>../img/settings.png</iconset>
    </property>
    <property name="text">
     <string>Render</string>
@@ -916,7 +916,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>img/update.png</normaloff>img/update.png</iconset>
+     <normaloff>../img/update.png</normaloff>../img/update.png</iconset>
    </property>
    <property name="text">
     <string>Update</string>
