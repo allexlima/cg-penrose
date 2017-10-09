@@ -1,10 +1,11 @@
 <img src="https://github.com/allexlima/cg-penrose/blob/master/penrose/img/icon.png?raw=true" width="64">
 
-### Welcome to [CG-]Penrose
-### 2D Graphical Transformations Software
+## Welcome to CG-Penrose
 
 [![Python versions](https://img.shields.io/badge/python-3.6-blue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
+
+### 2D Graphical Transformations Software
 
 Written in Python 3 and Qt5, this software allows the application of 2D graphical geometric transformations like translation, shearing, scale, rotation and reflection / mirroring in a polygon specified by the user.
 
