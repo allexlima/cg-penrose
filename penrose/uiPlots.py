@@ -20,12 +20,12 @@ class PlotCanvas(FigureCanvas):
 		if points is not None:
 			vertices = []
 			for item in points:
-				ax.annotate(str(item[0]), (item[1], item[2]))
+				ax.annotate("{}({}, {})".format(*item), (item[1], item[2])).set_fontsize(8)
 				vertices.append([item[1], item[2]])
 			tr = plt.Polygon(np.array(vertices))
 			ax.add_patch(tr)
 			ax.relim()
 			ax.margins(x=0.30, y=0.30)
 			ax.autoscale_view()
-			ax.set_title(title)
+			ax.set_title(title).set_fontsize(9)
 		self.draw()
