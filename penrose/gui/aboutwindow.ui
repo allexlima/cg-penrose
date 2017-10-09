@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../img/doc.png</normaloff>../img/doc.png</iconset>
+    <normaloff>penrose/img/doc.png</normaloff>penrose/img/doc.png</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -86,7 +86,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../img/github.png</normaloff>../img/github.png</iconset>
+     <normaloff>penrose/img/github.png</normaloff>penrose/img/github.png</iconset>
    </property>
   </widget>
   <widget class="Line" name="line">
@@ -119,8 +119,8 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../img/icon.png</normaloff>
-     <disabledoff>../img/icon.png</disabledoff>../img/icon.png</iconset>
+     <normaloff>penrose/img/icon.png</normaloff>
+     <disabledoff>penrose/img/icon.png</disabledoff>penrose/img/icon.png</iconset>
    </property>
    <property name="iconSize">
     <size>

@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDialog
-from .gui.verticewindow_ui import Ui_Dialog
+from penrose.gui.verticewindow_ui import Ui_Dialog
 
 
 class VerticesWindow(QDialog, Ui_Dialog):

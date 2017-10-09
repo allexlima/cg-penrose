@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox, QDialogButtonBox
 from penrose.gui.mainwindow_ui import Ui_MainWindow
 from penrose.uiPlots import PlotCanvas
 from penrose.uiVertices import VerticesWindow
+from penrose.uiAbout import AboutWindow
 import string
 import numpy as np
 from math import cos, sin, radians
@@ -17,6 +18,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.vertices = []
 		self.vert_transform = []
 		self.vertices_dialog = VerticesWindow()
+		self.about_dialog = AboutWindow()
 		self.actions()
 		self.init_canvas()
 
@@ -36,12 +38,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.actionUpdate.triggered.connect(self.transforms_2d)
 		self.actionClear.triggered.connect(self.clear_all)
 		self.actionGithub_repository.triggered.connect(self.github)
-		self.actionAbout_this_software.triggered.connect(self.about)
+		self.actionAbout_this_software.triggered.connect(self.about_dialog.exec_)
 		self.actionExit.triggered.connect(self.close)
 		#
 		self.pushVertice.clicked.connect(self.vertices_dialog.exec_)
 		self.popVertice.clicked.connect(self.remove_vertive)
 		self.vertices_dialog.buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.insert_vertice)
+		self.about_dialog.commandLinkButton.clicked.connect(self.github)
 		#
 		self.boxScale.toggled.connect(self.scale_point.setEnabled, True)
 		self.boxRotation.toggled.connect(self.rotation_vertices.setEnabled, True)
@@ -200,13 +203,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		webbrowser.open("https://github.com/allexlima/cg-penrose")
 
 	def about(self):
-		self.alert(
-			"\nTrabalho desenvolvido para compor a nota parcial da 3ª ARE da disciplina de " +
-			"Sistemas Operacionais, ministrada pelo Prof.ª M.Sc. Ângela Lima. " +
-			"\n\nDesenvolvido por: Allex Lima, Paulo Moraes e Renan Barroncas",
-			title="Sobre",
-			code=1
-		)
+		pass
 
 	def alert(self, text, title="Alert", code=2):
 		message = QMessageBox(self)
