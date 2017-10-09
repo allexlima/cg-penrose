@@ -1,10 +1,12 @@
 from PyQt5.QtCore import QAbstractTableModel, Qt
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QDialogButtonBox
-from .gui.mainwindow_ui import Ui_MainWindow
-from .uiPlots import PlotCanvas
-from .uiVertices import VerticesWindow
+from penrose.gui.mainwindow_ui import Ui_MainWindow
+from penrose.uiPlots import PlotCanvas
+from penrose.uiVertices import VerticesWindow
 import string
 import numpy as np
+from math import cos, sin, radians
+import webbrowser
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -12,20 +14,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		super(MainWindow, self).__init__()
 		self.setupUi(self)
 		self.graphs = None
-		self.vertices_dialog = VerticesWindow()
 		self.vertices = []
 		self.vert_transform = []
+		self.vertices_dialog = VerticesWindow()
 		self.actions()
 		self.init_canvas()
 
 	def init_canvas(self):
 		self.graphs = [PlotCanvas(self) for i in range(2)]
-		self.graphs[0].move(380 + 30, 37 + 100)
-		self.graphs[1].move(380 + 325, 37 + 100)
-
-	def set_polygon(self, points1=None, points2=None):
-		self.graphs[0].plot("Initial polygon", points1)
-		self.graphs[1].plot("Final polygon", points2)
+		self.graphs[0].move(355 + 30, 100)
+		self.graphs[1].move(355 + 333, 100)
 
 	def actions(self):
 		self.actionOpen_file.setEnabled(False)
@@ -33,13 +31,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.actionClear.setEnabled(False)
 		self.actionCompile.setEnabled(False)
 		self.popVertice.setEnabled(False)
+		#
+		self.actionCompile.triggered.connect(self.render_polygon)
+		self.actionUpdate.triggered.connect(self.transforms_2d)
+		self.actionClear.triggered.connect(self.clear_all)
+		self.actionGithub_repository.triggered.connect(self.github)
+		self.actionAbout_this_software.triggered.connect(self.about)
 		self.actionExit.triggered.connect(self.close)
+		#
 		self.pushVertice.clicked.connect(self.vertices_dialog.exec_)
 		self.popVertice.clicked.connect(self.remove_vertive)
 		self.vertices_dialog.buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.insert_vertice)
-		self.actionCompile.triggered.connect(self.render_polygon)
-		self.actionClear.triggered.connect(self.clear_all)
-		self.actionUpdate.triggered.connect(self.transforms_2d)
+		#
+		self.boxScale.toggled.connect(self.scale_point.setEnabled, True)
+		self.boxRotation.toggled.connect(self.rotation_vertices.setEnabled, True)
+		self.boxRotation.toggled.connect(self.rotation_direction.setEnabled, True)
 
 	def __create_table(self):
 		contents = [()] if len(self.vertices) is 0 else self.vertices
@@ -78,18 +84,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.vertices = []
 		self.__create_table()
 		self.helpText.show()
+		self.graphs[0].plot("Initial polygon", None)
+		self.graphs[1].plot("Final polygon", None)
 		self.popVertice.setEnabled(False)
 		self.actionUpdate.setEnabled(False)
-		self.set_polygon()
+		self.boxTranslation.setChecked(False)
+		self.boxShearing.setChecked(False)
+		self.boxScale.setChecked(False)
+		self.boxRotation.setChecked(False)
+		self.boxReflection.setChecked(False)
+		self.reflection_x.setChecked(False)
+		self.reflection_y.setChecked(False)
+		self.translation_tx.setValue(0)
+		self.translation_ty.setValue(0)
+		self.shear_cx.setValue(0)
+		self.shear_cy.setValue(0)
+		self.scale_sx.setValue(0)
+		self.scale_sy.setValue(0)
+		self.rotation_angle.setValue(0)
+		self.rotation_angle.setValue(0)
 
 	def render_polygon(self):
-		self.set_polygon(points1=self.vertices)
+		self.graphs[0].plot("Initial polygon", self.vertices)
 		self.actionCompile.setEnabled(False)
 		self.actionUpdate.setEnabled(True)
 		self.init_comboboxs()
 
 	def init_comboboxs(self):
-		pass
+		self.scale_point.clear()
+		self.rotation_vertices.clear()
+		self.rotation_direction.clear()
+		self.scale_point.addItems(["Origin"] + self.__break_list(self.vertices)[0])
+		self.rotation_vertices.addItems(["Origin"] + self.__break_list(self.vertices)[0])
+		self.rotation_direction.addItem("counter-clockwise")
 
 	def transforms_2d(self):
 		if not self.boxTranslation.isChecked() and not self.boxShearing.isChecked() and not self.boxScale.isChecked() \
@@ -111,24 +138,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 					[0, 0, 1]
 				]))
 			if self.boxScale.isChecked():
+				xp, yp = self.__reference_point(self.scale_point.currentIndex())
+				sx, sy = self.scale_sx.value(), self.scale_sy.value()
 				matrices.append(np.array([
-					[self.scale_sx.value(), 0, 0],
-					[0, self.scale_sy.value(), 0],
-					[0, 0, 1]
-				]))
-			if self.boxRotation.isChecked():
-				matrices.append(np.array([
-					[1, 0, 0],
-					[0, 1, 0],
-					[0, 0, 1]
-				]))
-			if self.boxReflection.isChecked():
-				matrices.append(np.array([
-					[1, 0, 0],
-					[0, 1, 0],
+					[sx, 0, ((-xp*sx)+xp)],
+					[0, sy, ((-yp*sy)+yp)],
 					[0, 0, 1]
 				]))
 
+			if self.boxRotation.isChecked():
+				h, k = self.__reference_point(self.rotation_vertices.currentIndex())
+				theta = radians(self.rotation_angle.value())
+				matrices.append(np.array([
+					[cos(theta), -sin(theta), (-h*cos(theta))+(k*sin(theta))+h],
+					[sin(theta), cos(theta), (-h*sin(theta))-(k*cos(theta))+k],
+					[0, 0, 1]
+				]))
+			if self.boxReflection.isChecked():
+				if self.reflection_x.isChecked():
+					matrices.append(np.array([
+						[1, 0, 0],
+						[0, -1, 0],
+						[0, 0, 1]
+					]))
+				if self.reflection_y.isChecked():
+					matrices.append(np.array([
+						[-1, 0, 0],
+						[0, 1, 0],
+						[0, 0, 1]
+					]))
 			# calculate the transpose matrix of the vertices (after remove the labels in '__break_list')
 			transpose = self.__break_list(self.vertices)[-1].transpose()
 
@@ -140,7 +178,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 			multi_matrices = np.delete(np.linalg.multi_dot(matrices), 2, 0).transpose()
 			# join the labels and vertices to generate a list of tuples like [(LABEL, X, Y),..]
 			new_vertices = self.__join_list(self.__break_list(self.vertices)[0], multi_matrices)
-			self.set_polygon(points1=self.vertices, points2=new_vertices)
+			self.graphs[1].plot("Final polygon", new_vertices)
+
+	def __reference_point(self, index):
+		v = tuple(self.__break_list(self.vertices)[-1][index-1])
+		return (0, 0) if index == 0 else (v[0], v[1])
 
 	@staticmethod
 	def __break_list(vertices):
@@ -152,6 +194,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	def __join_list(letters, points):
 		points = [tuple(item) for item in points]
 		return [((letters[index],) + value) for index, value in enumerate(points)]
+
+	@staticmethod
+	def github():
+		webbrowser.open("https://github.com/allexlima/cg-penrose")
+
+	def about(self):
+		self.alert(
+			"\nTrabalho desenvolvido para compor a nota parcial da 3ª ARE da disciplina de " +
+			"Sistemas Operacionais, ministrada pelo Prof.ª M.Sc. Ângela Lima. " +
+			"\n\nDesenvolvido por: Allex Lima, Paulo Moraes e Renan Barroncas",
+			title="Sobre",
+			code=1
+		)
 
 	def alert(self, text, title="Alert", code=2):
 		message = QMessageBox(self)

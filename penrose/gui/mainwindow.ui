@@ -373,8 +373,17 @@ p, li { white-space: pre-wrap; }
          <height>20</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reference Point</string>
+       </property>
+       <property name="toolTipDuration">
+        <number>2</number>
+       </property>
+       <property name="statusTip">
+        <string>Reference Point</string>
+       </property>
        <property name="text">
-        <string>Vertices:</string>
+        <string>Ref.:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -562,22 +571,6 @@ p, li { white-space: pre-wrap; }
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_12">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>90</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Vertices:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
       <widget class="QComboBox" name="rotation_vertices">
        <property name="enabled">
         <bool>false</bool>
@@ -688,6 +681,31 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="singleStep">
         <number>45</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reference Point</string>
+       </property>
+       <property name="toolTipDuration">
+        <number>2</number>
+       </property>
+       <property name="statusTip">
+        <string>Reference Point</string>
+       </property>
+       <property name="text">
+        <string>Ref.:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </widget>

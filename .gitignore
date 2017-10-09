@@ -1,5 +1,7 @@
-#UiCompiled
+#Penrose Ignored files
 penrose/gui/*_ui.py
+build/
+bin/
 
 # JetBrains Pycharm files
 .idea/
