@@ -13,7 +13,11 @@ It is strongly recommended be using some unix-based OS as [Debian](http://debian
 
 :star2: Don't forget to give an star to this repo =)
 
-* You can see the [app screenshots here](https://github.com/allexlima/cg-penrose/tree/master/screenshots)
+#### Index
+
+1. [Setup](https://github.com/allexlima/cg-penrose#setup) 
+2. [Screenshots](https://github.com/allexlima/cg-penrose#screenshots)
+3. [Basic usage](https://github.com/allexlima/cg-penrose#basic-usage)
 
 ## Setup
 
@@ -54,6 +58,9 @@ Hey! You can explore the `Makefile` tags to fastly execute `penrose` app, if you
     ```bash
     $ python -m penrose
     ```
+
+## Screenshots
+## Basic Usage
 
 ---
 
