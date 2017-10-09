@@ -1,4 +1,4 @@
-<img src="https://github.com/allexlima/cg-penrose/blob/master/penrose/img/icon.png?raw=true" width="84">
+<img src="https://github.com/allexlima/cg-penrose/blob/master/penrose/img/icon.png?raw=true" width="64">
 
 ### Welcome to [CG-]Penrose
 ### 2D Graphical Transformations Software
@@ -10,12 +10,7 @@ Written in Python 3 and Qt5, this software allows the application of 2D graphica
 
 It is strongly recommended be using some unix-based OS as [Debian](http://debian.org), [Ubuntu](http://www.ubuntu.com/) or [OSX](http://www.apple.com/in/osx/). We couldn't test  in Windows OS, only in some Linux-like distros**. If you found some bug, please help us to improve this application opening an [issue](https://github.com/allexlima/cg-penrose/issues) and/or sending a [pull request](https://github.com/allexlima/cg-penrose/pulls). 
 
-Don't forget to give an star to this repo =)
-
-<!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/allexlima/cg-penrose" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star allexlima/cg-penrose on GitHub">Star</a>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+:star2: Don't forget to give an star to this repo =)
 
 * You can see the [app screenshots here](https://github.com/allexlima/cg-penrose/tree/master/screenshots)
 
