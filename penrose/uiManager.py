@@ -86,6 +86,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.set_polygon(points1=self.vertices)
 		self.actionCompile.setEnabled(False)
 		self.actionUpdate.setEnabled(True)
+		self.init_comboboxs()
+
+	def init_comboboxs(self):
+		pass
 
 	def transforms_2d(self):
 		if not self.boxTranslation.isChecked() and not self.boxShearing.isChecked() and not self.boxScale.isChecked() \
@@ -108,8 +112,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 				]))
 			if self.boxScale.isChecked():
 				matrices.append(np.array([
-					[1, 0, 0],
-					[0, 1, 0],
+					[self.scale_sx.value(), 0, 0],
+					[0, self.scale_sy.value(), 0],
 					[0, 0, 1]
 				]))
 			if self.boxRotation.isChecked():
