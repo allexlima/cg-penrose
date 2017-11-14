@@ -148,7 +148,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 					[0, sy, ((-yp*sy)+yp)],
 					[0, 0, 1]
 				]))
-
 			if self.boxRotation.isChecked():
 				h, k = self.__reference_point(self.rotation_vertices.currentIndex())
 				theta = radians(self.rotation_angle.value())

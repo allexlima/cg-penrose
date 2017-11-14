@@ -53,7 +53,7 @@
     </property>
     <widget class="QWidget" name="tab_vertices">
      <attribute name="title">
-      <string>Polygon Vertices</string>
+      <string>Vertices</string>
      </attribute>
      <widget class="QPushButton" name="pushVertice">
       <property name="geometry">
@@ -130,9 +130,9 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>90</y>
+        <y>80</y>
         <width>311</width>
-        <height>141</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -145,10 +145,10 @@
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You must insert at least &lt;span style=&quot; font-weight:600;&quot;&gt;3 vertices&lt;/span&gt; through the '&lt;span style=&quot; font-weight:600;&quot;&gt;push&lt;/span&gt;' button. After this, you can render your polygon clicking in &lt;span style=&quot; font-weight:600;&quot;&gt;Tools &amp;gt; Render&lt;/span&gt;, or pressing &lt;span style=&quot; font-weight:600;&quot;&gt;F4 key&lt;/span&gt; shortcut. &lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;If you need help, go to the &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Help &amp;gt; Github repository&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; to read the documentation.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto Medium'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Use the &lt;span style=&quot; font-family:'Cantarell'; font-size:10pt;&quot;&gt;'&lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt; font-weight:600;&quot;&gt;push&lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt;&quot;&gt;' button to i&lt;/span&gt;nsert at least &lt;span style=&quot; font-weight:600;&quot;&gt;2 vertices&lt;/span&gt; to draw a &lt;span style=&quot; font-weight:600;&quot;&gt;line&lt;/span&gt; or at least&lt;span style=&quot; font-weight:600;&quot;&gt; 3 vertices&lt;/span&gt; to draw a &lt;span style=&quot; font-weight:600;&quot;&gt;polygon&lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt;&quot;&gt;. Then, you will be able to rasterize or line or apply any 2D-Transformation on your polygon, using &lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt; font-weight:600;&quot;&gt;Tools &lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt;&quot;&gt;tab of CG-Penrose App.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt; font-style:italic;&quot;&gt;If you need help, go to the &lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt; font-weight:600; font-style:italic;&quot;&gt;Help &amp;gt; Github repository&lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:10pt; font-style:italic;&quot;&gt; to read the documentation.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <zorder>tableVertices</zorder>
@@ -820,7 +820,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -844,8 +844,63 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionCompile"/>
-    <addaction name="actionUpdate"/>
+    <widget class="QMenu" name="menuRender">
+     <property name="title">
+      <string>Polygon</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../img/polygon.png</normaloff>../img/polygon.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuExamples">
+      <property name="title">
+       <string>Examples</string>
+      </property>
+      <addaction name="separator"/>
+      <addaction name="separator"/>
+      <addaction name="actionTriangle_2"/>
+      <addaction name="actionSquare_2"/>
+      <addaction name="actionPentagon"/>
+      <addaction name="actionHexagon"/>
+     </widget>
+     <addaction name="actionCompile"/>
+     <addaction name="actionUpdate"/>
+     <addaction name="separator"/>
+     <addaction name="menuExamples"/>
+    </widget>
+    <widget class="QMenu" name="menuLine">
+     <property name="title">
+      <string>Line</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../img/line.png</normaloff>../img/line.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuRasterize_with">
+      <property name="title">
+       <string>Rasterize using...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../img/settings.png</normaloff>../img/settings.png</iconset>
+      </property>
+      <addaction name="actionRasterization"/>
+      <addaction name="actionBasic_incremental_algorithm"/>
+      <addaction name="actionBresenham_Algorithm"/>
+     </widget>
+     <widget class="QMenu" name="menuExamples_2">
+      <property name="title">
+       <string>Examples</string>
+      </property>
+      <addaction name="actionLine_2"/>
+      <addaction name="actionLine_3"/>
+      <addaction name="actionLine_5"/>
+     </widget>
+     <addaction name="menuRasterize_with"/>
+     <addaction name="menuExamples_2"/>
+    </widget>
+    <addaction name="menuLine"/>
+    <addaction name="menuRender"/>
     <addaction name="separator"/>
     <addaction name="actionClear"/>
    </widget>
@@ -928,7 +983,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>penrose/img/settings.png</normaloff>penrose/img/settings.png</iconset>
    </property>
    <property name="text">
-    <string>Render polygon</string>
+    <string>Render</string>
    </property>
    <property name="shortcut">
     <string>F4</string>
@@ -947,6 +1002,86 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="shortcut">
     <string>F5</string>
+   </property>
+  </action>
+  <action name="actionSquare">
+   <property name="text">
+    <string>Square</string>
+   </property>
+  </action>
+  <action name="actionTriangle">
+   <property name="text">
+    <string>Triangle</string>
+   </property>
+  </action>
+  <action name="actionLine_01">
+   <property name="text">
+    <string>Hexagon</string>
+   </property>
+  </action>
+  <action name="actionLine_02">
+   <property name="text">
+    <string>Line 01</string>
+   </property>
+  </action>
+  <action name="actionLine_03">
+   <property name="text">
+    <string>Line 02</string>
+   </property>
+  </action>
+  <action name="actionLine_4">
+   <property name="text">
+    <string>Line 03</string>
+   </property>
+  </action>
+  <action name="actionTriangle_2">
+   <property name="text">
+    <string>Triangle</string>
+   </property>
+  </action>
+  <action name="actionSquare_2">
+   <property name="text">
+    <string>Square</string>
+   </property>
+  </action>
+  <action name="actionPentagon">
+   <property name="text">
+    <string>Pentagon</string>
+   </property>
+  </action>
+  <action name="actionHexagon">
+   <property name="text">
+    <string>Hexagon</string>
+   </property>
+  </action>
+  <action name="actionRasterization">
+   <property name="text">
+    <string>Simple Line Algorithm</string>
+   </property>
+  </action>
+  <action name="actionBresenham_Algorithm">
+   <property name="text">
+    <string>Bresenham Algorithm</string>
+   </property>
+  </action>
+  <action name="actionLine_2">
+   <property name="text">
+    <string>Line 01</string>
+   </property>
+  </action>
+  <action name="actionLine_3">
+   <property name="text">
+    <string>Line 02</string>
+   </property>
+  </action>
+  <action name="actionLine_5">
+   <property name="text">
+    <string>Line 03</string>
+   </property>
+  </action>
+  <action name="actionBasic_incremental_algorithm">
+   <property name="text">
+    <string>Basic Incremental Algorithm</string>
    </property>
   </action>
  </widget>
