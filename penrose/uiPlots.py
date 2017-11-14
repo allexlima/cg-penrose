@@ -31,7 +31,7 @@ class PlotCanvas(FigureCanvas):
 		if points is not None:
 			vertices = []
 			for item in points:
-				ax.annotate("{}({}, {})".format(*item), (item[1], item[2])).set_fontsize(8)
+				ax.annotate("{}({:.2f}, {:.2f})".format(*item), (item[1], item[2])).set_fontsize(8)
 				vertices.append([item[1], item[2]])
 			tr = plt.Polygon(np.array(vertices))
 			ax.add_patch(tr)
