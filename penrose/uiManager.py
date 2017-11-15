@@ -33,6 +33,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.actionClear.setEnabled(False)
 		self.actionCompile.setEnabled(False)
 		self.popVertice.setEnabled(False)
+		self.tab_transformations.setEnabled(False)
 		self.menuRasterize_with.setEnabled(False)
 		#
 		self.actionCompile.triggered.connect(self.render_polygon)
@@ -86,6 +87,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 			self.menuRasterize_with.setEnabled(True)
 		if len(self.vertices) >= 3:
 			self.menuRasterize_with.setEnabled(False)
+			self.tab_transformations.setEnabled(True)
 			self.actionClear.setEnabled(True)
 			self.actionCompile.setEnabled(True)
 		if len(self.vertices) > 8:
@@ -126,6 +128,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.actionClear.setEnabled(False)
 		self.actionCompile.setEnabled(False)
 		self.popVertice.setEnabled(False)
+		self.tab_transformations.setEnabled(False)
 		self.menuRasterize_with.setEnabled(False)
 		self.boxTranslation.setChecked(False)
 		self.boxShearing.setChecked(False)
@@ -150,13 +153,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.init_comboboxs()
 
 	def rasterize_lines(self, algorithm):
-		self.graphs[0].matrix("Initial Points", self.vertices)
-		if algorithm == 0:
-			fLine.simple_line()
-		elif algorithm == 1:
-			fLine.basic_incremental()
+		if len(fPolygon.vertices_break(self.vertices)[-1]) != 2:
+			self.alert("You must insert exactly 2 vertices to rasterize lines using CG-Penrose v1.2.",
+			           "No transformation selected", 3)
 		else:
-			fLine.bresenham()
+			self.graphs[0].matrix("Initial Points", self.vertices)
+			if algorithm == 0:
+				fLine.simple_line()
+			elif algorithm == 1:
+				fLine.basic_incremental()
+			else:
+				fLine.bresenham()
 		self.menuRasterize_with.setEnabled(False)
 
 	def init_comboboxs(self):
@@ -169,30 +176,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 	def transforms_2d(self):
 		if not self.boxTranslation.isChecked() and not self.boxShearing.isChecked() and not self.boxScale.isChecked() \
-					and not self.boxRotation.isChecked() and not self.boxReflection.isChecked():
+				and not self.boxRotation.isChecked() and not self.boxReflection.isChecked():
 			self.alert("You should select at least 1 transformation before", "No transformation selected", 3)
 		else:
-			
+
 			if self.boxTranslation.isChecked():
 				fPolygon.add_kernel(fPolygon.translation(self.translation_tx.value(), self.translation_ty.value()))
-				
+
 			if self.boxShearing.isChecked():
 				fPolygon.add_kernel(fPolygon.shearing(self.shear_cx.value(), self.shear_cy.value()))
-				
+
 			if self.boxScale.isChecked():
 				xp, yp = fPolygon.reference_point(self.vertices, self.scale_point.currentIndex())
 				fPolygon.add_kernel(fPolygon.scaling(xp, yp, self.scale_sx.value(), self.scale_sy.value()))
-				
+
 			if self.boxRotation.isChecked():
 				xp, yp = fPolygon.reference_point(self.vertices, self.rotation_vertices.currentIndex())
 				fPolygon.add_kernel(fPolygon.rotation(xp, yp, self.rotation_angle.value()))
-				
+
 			if self.boxReflection.isChecked():
 				if self.reflection_x.isChecked():
 					fPolygon.add_kernel(fPolygon.reflection_x())
 				if self.reflection_y.isChecked():
 					fPolygon.add_kernel(fPolygon.reflection_y)
-					
+
 			new_vertices = fPolygon.transformation_2d(fPolygon.vertices_break(self.vertices)[-1])
 			new_vertices = fPolygon.vertices_join(fPolygon.vertices_break(self.vertices)[0], new_vertices)
 			self.graphs[1].plot("Final Polygon", new_vertices)
