@@ -48,7 +48,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
 
 \~**OR**\~
 
-2.2. Create virtualenv and install the requirements
+2. Create virtualenv and install the requirements
 
     ```bash
     $ virtualenv -p python3 env  
@@ -59,19 +59,19 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     $ pip install -r requirements.txt
     ```
 
-2. Compile the UIs
+3. Compile the UIs
 
     ```bash
     $ python setup.py build_ui
     ```
     
-3. Install the package
+4. Install the package
 
     ```bash
     $ pip install -e .
     ```
     
-4. And finally run `penrose` =)
+5. And finally run `penrose` =)
 
     ```bash
     $ python -m penrose
