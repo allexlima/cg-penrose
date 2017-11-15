@@ -6,11 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# class NavigationToolbar(NavigationToolbar2QT):
-# 	# only display the buttons we need
-# 	toolitems = [t for t in NavigationToolbar2QT.toolitems if t[0] in ('Home', 'Pan', 'Zoom', 'Save')]
-
-
 class PlotCanvas(FigureCanvas):
 	def __init__(self, parent=None, width=4.6, height=4, dpi=70):
 		fig = Figure(figsize=(width, height), dpi=dpi)
@@ -35,12 +30,8 @@ class PlotCanvas(FigureCanvas):
 				vertices.append([item[1], item[2]])
 			tr = plt.Polygon(np.array(vertices))
 			ax.add_patch(tr)
-
-			# ax.relim()
-			# ax.autoscale()
 			ax.set_xlim(-5, 10)
 			ax.set_ylim(-5, 10)
-			# ax.autoscale_view()
 			ax.set_title(title).set_fontsize(9)
 		self.draw()
 
@@ -92,15 +83,6 @@ def zoom_factory(ax, base_scale=2.):
 		ax.figure.canvas.draw() # force re-draw
 
 	fig = ax.get_figure() # get the figure of interest
-	# attach the call back
-	fig.canvas.mpl_connect('scroll_event', zoom_fun)
-
-	# return the function
-	return zoom_fun
-
-	fig = ax.get_figure()  # get the figure of interest
-	scale = 1.5
-	f = zoom_factory(ax, base_scale=scale)
 	# attach the call back
 	fig.canvas.mpl_connect('scroll_event', zoom_fun)
 
