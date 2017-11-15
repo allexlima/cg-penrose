@@ -39,23 +39,28 @@ class PlotCanvas(FigureCanvas):
 		ax = self.figure.add_subplot(111)
 		ax.cla()
 
-		if len(points) == 2:
-			points = [[item[0], abs(item[1]), abs(item[2])] for item in points]
-
-			size = int(max([sum(item[1:]) for item in points])) + 1
+		if points is not None:
+			points = np.abs(np.uint8(points))
+			size = np.max(points) + 2
 			data = np.zeros((size, size))
 
 			for item in points:
-				data[int(item[2]), int(item[1])] = 1
-				ax.annotate("{}".format(item[0]), (item[1]+.4, item[2]+.3)).set_color('white')
+				data[int(item[1]), int(item[0])] = 1
 
-			ax.pcolor(data, cmap='binary', edgecolor='black', lw=0.5)
+			ax.annotate("A", (points[0][0]+.4, points[0][-1]+.3)).set_color('white')
+			ax.annotate("B", (points[-1][0]+.4, points[-1][-1]+.3)).set_color('white')
+
+			if len(points) > 2:
+				data[points[0][-1], points[0][0]] = .5
+				data[points[-1][-1], points[-1][0]] = .5
+
+			ax.pcolor(data, cmap='gist_yarg', edgecolor='black', lw=0.5)
 
 			ax.xaxis.set(ticks=np.arange(0.5, size), ticklabels=range(size))
 			ax.yaxis.set(ticks=np.arange(0.5, size), ticklabels=range(size))
 
 			ax.set_title(title).set_fontsize(9)
-			self.draw()
+		self.draw()
 
 
 def zoom_factory(ax, base_scale=2.):

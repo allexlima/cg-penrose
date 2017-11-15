@@ -69,6 +69,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.tableVertices.setModel(TableModel(self, contents, ["Label", "X", "Y"]))
 		self.tableVertices.setColumnWidth(0, 158)
 
+	def update_graphs(self):
+		if self.actionDynamicInput.isChecked():
+			if len(self.vertices) == 0:
+				self.clear_all()
+			elif len(self.vertices) <= 2:
+				self.graphs[0].matrix("Initial Points", fPolygon.vertices_break(self.vertices)[-1])
+				self.menuRasterize_with.setEnabled(True)
+			else:
+				self.render_polygon()
+
 	def insert_vertex(self, x=None, y=None):
 		self.vertices_dialog.vertice_x.setFocus()
 		if not x and not y:
@@ -81,9 +91,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.vertices_dialog.vertice_x.setValue(0)
 		self.vertices_dialog.vertice_y.setValue(0)
 		self.popVertice.setEnabled(True if len(self.vertices) > 0 else False)
-		self.update_table()
 
-		if len(self.vertices) == 2:
+		if len(self.vertices) <= 2:
 			self.menuRasterize_with.setEnabled(True)
 		if len(self.vertices) >= 3:
 			self.menuRasterize_with.setEnabled(False)
@@ -94,16 +103,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 			self.alert("You can only enter up to 8 vertices", "Maximum amount of vertices")
 			self.remove_vertex()
 
+		self.update_table()
+		self.update_graphs()
+
 	def remove_vertex(self):
 		self.vertices.pop()
-		self.update_table()
-
 		if len(self.vertices) < 3:
 			self.actionCompile.setEnabled(False)
 			self.actionClear.setEnabled(False)
 		if len(self.vertices) == 0:
 			self.helpText.show()
 			self.clear_all()
+		self.update_table()
+		self.update_graphs()
 
 	def examples(self, index):
 		self.clear_all()
@@ -118,6 +130,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		]
 		for point in vertices[index]:
 			self.insert_vertex(*point)
+		self.actionClear.setEnabled(True)
 
 	def clear_all(self):
 		self.vertices = []
@@ -153,17 +166,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.init_comboboxs()
 
 	def rasterize_lines(self, algorithm):
-		if len(fPolygon.vertices_break(self.vertices)[-1]) != 2:
+		points = fPolygon.vertices_break(self.vertices)[-1]
+		new_points = []
+		if len(points) != 2:
 			self.alert("You must insert exactly 2 vertices to rasterize lines using CG-Penrose v1.2.",
 			           "No transformation selected", 3)
 		else:
-			self.graphs[0].matrix("Initial Points", self.vertices)
+			self.graphs[0].matrix("Initial Points", points)
 			if algorithm == 0:
-				fLine.simple_line()
+				new_points = fLine.simple_line(points)
 			elif algorithm == 1:
 				fLine.basic_incremental()
 			else:
 				fLine.bresenham()
+			self.graphs[1].matrix("Rasterized Line", new_points)
+		self.actionClear.setEnabled(True)
 		self.menuRasterize_with.setEnabled(False)
 
 	def init_comboboxs(self):
@@ -178,6 +195,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		if not self.boxTranslation.isChecked() and not self.boxShearing.isChecked() and not self.boxScale.isChecked() \
 				and not self.boxRotation.isChecked() and not self.boxReflection.isChecked():
 			self.alert("You should select at least 1 transformation before", "No transformation selected", 3)
+			self.tabWidget.setCurrentIndex(1)
 		else:
 
 			if self.boxTranslation.isChecked():
