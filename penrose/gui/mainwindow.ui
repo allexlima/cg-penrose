@@ -852,56 +852,40 @@ p, li { white-space: pre-wrap; }
       <iconset>
        <normaloff>penrose/img/polygon.png</normaloff>penrose/img/polygon.png</iconset>
      </property>
-     <widget class="QMenu" name="menuExamples">
-      <property name="title">
-       <string>Examples</string>
-      </property>
-      <addaction name="separator"/>
-      <addaction name="separator"/>
-      <addaction name="actionExTriangle"/>
-      <addaction name="actionExSquare"/>
-      <addaction name="actionExPentagon"/>
-      <addaction name="actionExHexagon"/>
-     </widget>
      <addaction name="actionCompile"/>
      <addaction name="actionUpdate"/>
      <addaction name="separator"/>
-     <addaction name="menuExamples"/>
     </widget>
-    <widget class="QMenu" name="menuLine">
+    <widget class="QMenu" name="menuExamples_3">
      <property name="title">
-      <string>Line</string>
+      <string>Examples</string>
+     </property>
+     <addaction name="actionExLine01"/>
+     <addaction name="actionExLine02"/>
+     <addaction name="actionExLine03"/>
+     <addaction name="separator"/>
+     <addaction name="actionExTriangle"/>
+     <addaction name="actionExSquare"/>
+     <addaction name="actionExPentagon"/>
+     <addaction name="actionExHexagon"/>
+    </widget>
+    <widget class="QMenu" name="menuRasterize_with">
+     <property name="title">
+      <string>Rasterize line with...</string>
      </property>
      <property name="icon">
       <iconset>
        <normaloff>penrose/img/line.png</normaloff>penrose/img/line.png</iconset>
      </property>
-     <widget class="QMenu" name="menuRasterize_with">
-      <property name="title">
-       <string>Rasterize using...</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>penrose/img/settings.png</normaloff>penrose/img/settings.png</iconset>
-      </property>
-      <addaction name="actionSimpleLineAlgorithm"/>
-      <addaction name="actionBasicIncrementalAlgorithm"/>
-      <addaction name="actionBresenhamAlgorithm"/>
-     </widget>
-     <widget class="QMenu" name="menuExamples_2">
-      <property name="title">
-       <string>Examples</string>
-      </property>
-      <addaction name="actionExLine01"/>
-      <addaction name="actionExLine02"/>
-      <addaction name="actionExLine03"/>
-     </widget>
-     <addaction name="menuRasterize_with"/>
-     <addaction name="menuExamples_2"/>
+     <addaction name="actionSimpleLineAlgorithm"/>
+     <addaction name="actionBasicIncrementalAlgorithm"/>
+     <addaction name="actionBresenhamAlgorithm"/>
     </widget>
-    <addaction name="menuLine"/>
+    <addaction name="menuRasterize_with"/>
     <addaction name="menuRender"/>
     <addaction name="separator"/>
+    <addaction name="menuExamples_3"/>
+    <addaction name="actionDynamicInput"/>
     <addaction name="actionClear"/>
    </widget>
    <addaction name="menuFile"/>
@@ -1082,6 +1066,28 @@ p, li { white-space: pre-wrap; }
   <action name="actionBasicIncrementalAlgorithm">
    <property name="text">
     <string>Basic Incremental Algorithm</string>
+   </property>
+  </action>
+  <action name="actionAutomaticRender">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Automatic Rendering</string>
+   </property>
+  </action>
+  <action name="actionDynamicInput">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dynamic Input</string>
    </property>
   </action>
  </widget>
