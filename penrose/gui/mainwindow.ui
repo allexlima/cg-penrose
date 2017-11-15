@@ -850,7 +850,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/polygon.png</normaloff>../img/polygon.png</iconset>
+       <normaloff>penrose/img/polygon.png</normaloff>penrose/img/polygon.png</iconset>
      </property>
      <widget class="QMenu" name="menuExamples">
       <property name="title">
@@ -858,10 +858,10 @@ p, li { white-space: pre-wrap; }
       </property>
       <addaction name="separator"/>
       <addaction name="separator"/>
-      <addaction name="actionTriangle_2"/>
-      <addaction name="actionSquare_2"/>
-      <addaction name="actionPentagon"/>
-      <addaction name="actionHexagon"/>
+      <addaction name="actionExTriangle"/>
+      <addaction name="actionExSquare"/>
+      <addaction name="actionExPentagon"/>
+      <addaction name="actionExHexagon"/>
      </widget>
      <addaction name="actionCompile"/>
      <addaction name="actionUpdate"/>
@@ -874,7 +874,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/line.png</normaloff>../img/line.png</iconset>
+       <normaloff>penrose/img/line.png</normaloff>penrose/img/line.png</iconset>
      </property>
      <widget class="QMenu" name="menuRasterize_with">
       <property name="title">
@@ -882,19 +882,19 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../img/settings.png</normaloff>../img/settings.png</iconset>
+        <normaloff>penrose/img/settings.png</normaloff>penrose/img/settings.png</iconset>
       </property>
-      <addaction name="actionRasterization"/>
-      <addaction name="actionBasic_incremental_algorithm"/>
-      <addaction name="actionBresenham_Algorithm"/>
+      <addaction name="actionSimpleLineAlgorithm"/>
+      <addaction name="actionBasicIncrementalAlgorithm"/>
+      <addaction name="actionBresenhamAlgorithm"/>
      </widget>
      <widget class="QMenu" name="menuExamples_2">
       <property name="title">
        <string>Examples</string>
       </property>
-      <addaction name="actionLine_2"/>
-      <addaction name="actionLine_3"/>
-      <addaction name="actionLine_5"/>
+      <addaction name="actionExLine01"/>
+      <addaction name="actionExLine02"/>
+      <addaction name="actionExLine03"/>
      </widget>
      <addaction name="menuRasterize_with"/>
      <addaction name="menuExamples_2"/>
@@ -1034,52 +1034,52 @@ p, li { white-space: pre-wrap; }
     <string>Line 03</string>
    </property>
   </action>
-  <action name="actionTriangle_2">
+  <action name="actionExTriangle">
    <property name="text">
     <string>Triangle</string>
    </property>
   </action>
-  <action name="actionSquare_2">
+  <action name="actionExSquare">
    <property name="text">
     <string>Square</string>
    </property>
   </action>
-  <action name="actionPentagon">
+  <action name="actionExPentagon">
    <property name="text">
     <string>Pentagon</string>
    </property>
   </action>
-  <action name="actionHexagon">
+  <action name="actionExHexagon">
    <property name="text">
     <string>Hexagon</string>
    </property>
   </action>
-  <action name="actionRasterization">
+  <action name="actionSimpleLineAlgorithm">
    <property name="text">
     <string>Simple Line Algorithm</string>
    </property>
   </action>
-  <action name="actionBresenham_Algorithm">
+  <action name="actionBresenhamAlgorithm">
    <property name="text">
     <string>Bresenham Algorithm</string>
    </property>
   </action>
-  <action name="actionLine_2">
+  <action name="actionExLine01">
    <property name="text">
     <string>Line 01</string>
    </property>
   </action>
-  <action name="actionLine_3">
+  <action name="actionExLine02">
    <property name="text">
     <string>Line 02</string>
    </property>
   </action>
-  <action name="actionLine_5">
+  <action name="actionExLine03">
    <property name="text">
     <string>Line 03</string>
    </property>
   </action>
-  <action name="actionBasic_incremental_algorithm">
+  <action name="actionBasicIncrementalAlgorithm">
    <property name="text">
     <string>Basic Incremental Algorithm</string>
    </property>
