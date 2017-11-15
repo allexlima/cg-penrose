@@ -44,6 +44,28 @@ class PlotCanvas(FigureCanvas):
 			ax.set_title(title).set_fontsize(9)
 		self.draw()
 
+	def matrix(self, title, points):
+		ax = self.figure.add_subplot(111)
+		ax.cla()
+
+		if len(points) == 2:
+			points = [[item[0], abs(item[1]), abs(item[2])] for item in points]
+
+			size = int(max([sum(item[1:]) for item in points]))
+			data = np.zeros((size, size))
+
+			for item in points:
+				data[int(item[2]), int(item[1])] = 1
+				ax.annotate("{}".format(item[0]), (item[1]+.4, item[2]+.3)).set_color('white')
+
+			ax.pcolor(data, cmap='binary', edgecolor='black', lw=0.5)
+
+			ax.xaxis.set(ticks=np.arange(0.5, size), ticklabels=range(size))
+			ax.yaxis.set(ticks=np.arange(0.5, size), ticklabels=range(size))
+
+			ax.set_title(title).set_fontsize(9)
+			self.draw()
+
 
 def zoom_factory(ax, base_scale=2.):
 	def zoom_fun(event):
