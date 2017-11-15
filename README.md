@@ -39,7 +39,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     
     and be happy :)
 
-**~ OR ~**
+\~**OR**\~
 
 1. Clone the repo
             
