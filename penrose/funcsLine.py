@@ -1,4 +1,5 @@
 import numpy as np
+from bresenham import bresenham as bh_algorithm
 
 
 def simple_line(vertices):
@@ -24,13 +25,6 @@ def basic_incremental(vertices):
 	return np.array(n_points)
 
 
-def bresenham():
-	print("Bresenham")
+def bresenham(vertices):
+	return np.array(list(bh_algorithm(*tuple(np.abs(vertices).reshape(1, 4)[0]))))
 
-
-if __name__ == "__main__":
-	points = np.array([
-		[1, 5],
-		[5, 0]
-	])
-	print(basic_incremental(points))
