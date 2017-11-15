@@ -28,7 +28,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     $ cd cg-penrose/
     ```
 
-2.1 Using `Makefile`:
+2. Using `Makefile`:
 
     *Supported only in linux-like operating systems yet* :information_desk_person:
     
@@ -59,19 +59,19 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     $ pip install -r requirements.txt
     ```
 
-2.2. Compile the UIs
+2. Compile the UIs
 
     ```bash
     $ python setup.py build_ui
     ```
     
-2.3. Install the package
+3. Install the package
 
     ```bash
     $ pip install -e .
     ```
     
-2.4. And finally run `penrose` =)
+4. And finally run `penrose` =)
 
     ```bash
     $ python -m penrose
