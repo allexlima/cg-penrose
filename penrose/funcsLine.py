@@ -10,11 +10,18 @@ def simple_line(vertices):
 		xa += 1
 		y = m*xa + b
 		n_points.append((xa, y))
-	return np.array(n_points, dtype=np.uint8)
+	return np.array(n_points)
 
 
-def basic_incremental():
-	print("Basic Incremental")
+def basic_incremental(vertices):
+	(xa, ya, xb, yb) = tuple(np.abs(vertices).reshape(1, 4)[0])
+	m = (yb - ya) / (xb - xa)
+	n_points = [(xa, ya)]
+	while xa < xb:
+		xa += 1
+		ya += m
+		n_points.append((xa, ya))
+	return np.array(n_points)
 
 
 def bresenham():
@@ -23,7 +30,7 @@ def bresenham():
 
 if __name__ == "__main__":
 	points = np.array([
-		[2, 6],
-		[6, 1]
+		[1, 5],
+		[5, 0]
 	])
-	print(simple_line(points))
+	print(basic_incremental(points))
