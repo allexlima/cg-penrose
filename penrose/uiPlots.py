@@ -42,7 +42,7 @@ class PlotCanvas(FigureCanvas):
 		if len(points) == 2:
 			points = [[item[0], abs(item[1]), abs(item[2])] for item in points]
 
-			size = int(max([sum(item[1:]) for item in points]))
+			size = int(max([sum(item[1:]) for item in points])) + 1
 			data = np.zeros((size, size))
 
 			for item in points:
