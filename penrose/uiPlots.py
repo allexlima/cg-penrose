@@ -47,8 +47,9 @@ class PlotCanvas(FigureCanvas):
 			for item in points:
 				data[int(item[1]), int(item[0])] = 1
 
-			ax.annotate("A", (points[0][0]+.4, points[0][-1]+.3)).set_color('white')
-			ax.annotate("B", (points[-1][0]+.4, points[-1][-1]+.3)).set_color('white')
+			ax.annotate("A", (points[0][0] + .4, points[0][-1] + .3)).set_color('white')
+			if len(points) > 1:
+				ax.annotate("B", (points[-1][0]+.4, points[-1][-1]+.3)).set_color('white')
 
 			if len(points) > 2:
 				data[points[0][-1], points[0][0]] = .5
