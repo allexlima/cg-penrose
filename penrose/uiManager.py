@@ -121,8 +121,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		self.vertices = []
 		self.update_table()
 		self.helpText.show()
-		self.graphs[0].plot("Initial polygon", None)
-		self.graphs[1].plot("Final polygon", None)
+		self.graphs[0].plot("", None)
+		self.graphs[1].plot("", None)
 		self.actionClear.setEnabled(False)
 		self.actionCompile.setEnabled(False)
 		self.popVertice.setEnabled(False)
