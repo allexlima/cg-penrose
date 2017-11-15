@@ -176,9 +176,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 			if algorithm == 0:
 				new_points = fLine.simple_line(points)
 			elif algorithm == 1:
-				fLine.basic_incremental()
+				new_points = fLine.basic_incremental(points)
 			else:
-				fLine.bresenham()
+				new_points = fLine.bresenham(points)
 			self.graphs[1].matrix("Rasterized Line", new_points)
 		self.actionClear.setEnabled(True)
 		self.menuRasterize_with.setEnabled(False)
