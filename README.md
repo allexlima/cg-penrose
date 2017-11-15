@@ -21,7 +21,14 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
 
 ## Setup
 
-* Using `Makefile`:
+1. Clone the repo
+            
+    ```bash
+    $ git clone https://github.com/allexlima/cg-penrose.git
+    $ cd cg-penrose/
+    ```
+
+2. Using `Makefile`:
 
     *Supported only in linux-like operating systems yet* :information_desk_person:
     
@@ -39,14 +46,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     
     and be happy :)
 
-**~ OR ~**
-
-1. Clone the repo
-            
-    ```bash
-    $ git clone https://github.com/allexlima/cg-penrose.git
-    $ cd cg-penrose/
-    ```
+\~**OR**\~
 
 2. Create virtualenv and install the requirements
 
