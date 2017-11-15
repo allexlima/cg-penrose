@@ -1,7 +1,6 @@
 import numpy as np
 from math import cos, sin, radians
 
-VERTICES = []
 KERNELS = []
 
 
@@ -73,7 +72,7 @@ def transformation_2d(vertices, kernels=KERNELS):
 	return final_transformation_result
 
 
-def vertices_break(vertices=VERTICES):
+def vertices_break(vertices):
 	"""
 	This function separates each point labels from vertices (x, y).
 	In other words, given one or more A(x, y) points this function returns two lists like ["A"] and [[x, y]].
@@ -92,9 +91,9 @@ def vertices_join(labels, points):
 	return [((labels[index],) + value) for index, value in enumerate(points)]
 
 
-def reference_point(index):
+def reference_point(vertices, index):
 	"""
 	This function returns the vertex (X, Y) from VERTICES through index value
 	"""
-	v = tuple(vertices_break()[-1][index-1])
+	v = tuple(vertices_break(vertices)[-1][index-1])
 	return (0, 0) if index == 0 else (v[0], v[1])
