@@ -183,8 +183,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 			else:
 				self.graphs[1].matrix("Rasterized Line", new_points)
 		self.actionClear.setEnabled(True)
-
-	# self.menuRasterize_with.setEnabled(False)
+		self.menuRasterize_with.setEnabled(False)
 
 	def init_comboboxs(self):
 		self.scale_point.clear()

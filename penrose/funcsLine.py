@@ -30,5 +30,6 @@ def basic_incremental(vertices):
 
 
 def bresenham(vertices):
-	return np.array(list(bh_algorithm(*tuple(np.uint8(np.abs(vertices)).reshape(1, 4)[0]))))
+	vertices = [int(item) for item in tuple(np.abs(vertices).reshape(1, 4)[0])]
+	return np.array(list(bh_algorithm(*vertices)))
 
