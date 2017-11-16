@@ -7,6 +7,8 @@ def simple_line(vertices):
 	m = (yb - ya) / (xb - xa)
 	b = ya - m*xa
 	n_points = [(xa, ya)]
+	if xa >= xb:  # This will help the UI show a alert informing the parameters problem
+		n_points = []
 	while xa < xb:
 		xa += 1
 		y = m*xa + b
@@ -18,6 +20,8 @@ def basic_incremental(vertices):
 	(xa, ya, xb, yb) = tuple(np.abs(vertices).reshape(1, 4)[0])
 	m = (yb - ya) / (xb - xa)
 	n_points = [(xa, ya)]
+	if xa >= xb:  # This will help the UI show a alert informing the parameters problem
+		n_points = []
 	while xa < xb:
 		xa += 1
 		ya += m

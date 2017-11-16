@@ -167,10 +167,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 	def rasterize_lines(self, algorithm):
 		points = fPolygon.vertices_break(self.vertices)[-1]
-		new_points = []
 		if len(points) != 2:
 			self.alert("You must insert exactly 2 vertices to rasterize lines using CG-Penrose v1.2.",
-			           "No transformation selected", 3)
+			           "Invalid Parameters", 3)
 		else:
 			self.graphs[0].matrix("Initial Points", points)
 			if algorithm == 0:
@@ -179,9 +178,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 				new_points = fLine.basic_incremental(points)
 			else:
 				new_points = fLine.bresenham(points)
-			self.graphs[1].matrix("Rasterized Line", new_points)
+			if len(new_points) == 0:
+				self.alert("Invalid points. Recheck your inserted vertices and try again.", "Invalid Parameters", 3)
+			else:
+				self.graphs[1].matrix("Rasterized Line", new_points)
 		self.actionClear.setEnabled(True)
-		self.menuRasterize_with.setEnabled(False)
+
+	# self.menuRasterize_with.setEnabled(False)
 
 	def init_comboboxs(self):
 		self.scale_point.clear()
