@@ -12,7 +12,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
  - Simulate line rasterization using algorithms like **Digital Differential Analyzer (DDA)** and **Bresenham Line-Drawing**
 
 
-:star2: Don't forget to give an star to this repo =)
+:star2: Don't forget to give a star to this repo =)
 
 #### Index
 
@@ -30,7 +30,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
 
 2. Using `Makefile`:
 
-    *Supported only in linux-like operating systems yet* :information_desk_person:
+    *Supported only in Linux-like operating systems yet* :information_desk_person:
     
     Prepare everything using only
     
@@ -71,7 +71,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
     $ pip install -e .
     ```
     
-5. And finally run `penrose` =)
+5. And finally, run `penrose` =)
 
     ```bash
     $ python -m penrose
@@ -79,7 +79,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
 
 ## Basic Usage
 
-**How use line rasterization functions?**
+**How to use line rasterization functions?**
 
 - Insert, using the **push** button exactly 2 vertices. Then, navigate to **Tools > Rasterize line with...** and choose any algorithm.
 
@@ -87,7 +87,7 @@ CG-Penrose is a software developed using Python 3.6 and Qt5, in Computer Graphic
 
 - First, you should know that you must insert at least 3 vertices through the **'push' button**, in the main screen. After this, you can render your polygon clicking in **Tools > Render**, or pressing **F4 key** shortcut. 
 
-- With you polygon rendered, now you can apply any of one transformations available in the **2D Transformations** tab. You can check the selected transformation an set the necessary parameters, then you should click in **Tools > Update** or press **F5 key** to apply and see the output.  
+- With your polygon rendered, now you can apply any of one transformation available in the **2D Transformations** tab. You can check the selected transformation and set the necessary parameters, then you should click in **Tools > Update** or press **F5 key** to apply and see the output.  
 
 
 
