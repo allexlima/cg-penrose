@@ -5,7 +5,7 @@ docopt==0.6.2
 future==0.16.0
 macholib==1.8
 matplotlib==2.1.0
-numpy==1.13.3
+numpy==1.22.0
 pefile==2017.9.3
 PyInstaller==3.3
 pyparsing==2.2.0
