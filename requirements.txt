@@ -7,7 +7,7 @@ macholib==1.8
 matplotlib==2.1.0
 numpy==1.13.3
 pefile==2017.9.3
-PyInstaller==3.3
+PyInstaller==3.6
 pyparsing==2.2.0
 pyqt-distutils==0.7.3
 PyQt5==5.9
